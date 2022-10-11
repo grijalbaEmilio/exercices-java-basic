@@ -1,3 +1,8 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Vector;
@@ -32,7 +37,7 @@ public class Main {
         // 3)
         System.out.println("-".repeat(14) + " 3 " + "-".repeat(14));
 
-        Vector<Character> vectorChars = new Vector();
+        Vector<Character> vectorChars = new Vector<Character>();
 
         vectorChars.add('h');
         vectorChars.add('e');
@@ -106,6 +111,13 @@ public class Main {
         }
 
         System.out.println("-".repeat(31));
+
+        // 7
+        System.out.println("-".repeat(14) + " 7 " + "-".repeat(14));
+
+        copyFiletext("src/hello.txt", "src/newFile.txt");
+
+        System.out.println("-".repeat(31));
     }
 
     static String reverse(String texto) {
@@ -118,5 +130,26 @@ public class Main {
 
     static void dividePorCero() throws ArithmeticException {
         throw new ArithmeticException();
+    }
+
+    static void copyFiletext(String pathFileToCopy, String pathNewFile) {
+        try {
+            InputStream file = new FileInputStream(pathFileToCopy);
+            byte[] data = file.readAllBytes();
+            file.close();
+
+            PrintStream newFile = new PrintStream(pathNewFile);
+            newFile.println("this is a Copy of " + pathFileToCopy + "\n");
+            newFile.write(data);
+            newFile.close();
+
+            System.out.println("Copy success !");
+
+        } catch (FileNotFoundException e) {
+            System.out.println("path origin file no valid: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("fail in copy" + e.getMessage());
+        }
+
     }
 }
