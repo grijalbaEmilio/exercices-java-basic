@@ -112,12 +112,18 @@ public class Main {
 
         System.out.println("-".repeat(31));
 
-        // 7
-        System.out.println("-".repeat(14) + " 7 " + "-".repeat(14));
+        // 8
+        System.out.println("-".repeat(14) + " 8 " + "-".repeat(14));
 
         copyFiletext("src/hello.txt", "src/newFile.txt");
 
         System.out.println("-".repeat(31));
+
+
+        //9
+        /* 
+         * program is in path https://github.com/grijalbaEmilio/exercices-java-basic/tree/main/ij-project-one/src/Program.java
+         */
     }
 
     static String reverse(String texto) {
